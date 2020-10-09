@@ -1,3 +1,5 @@
+import TheMovieDbSource from '../../data/themoviedb-source';
+
 const Detail = {
     async render() {
         return `
@@ -6,8 +8,12 @@ const Detail = {
     },
 
     async afterRender() {
+        const url = UrlParser.parseActiveUrlWithoutCombiner();
+        const movie = await TheMovieDbSource.detailMovie(url.id);
+        console.log(movie);
 
-    }
+        // TODO: tampilkan movie di dalam DO
+    },
 };
 
 export default Detail;
